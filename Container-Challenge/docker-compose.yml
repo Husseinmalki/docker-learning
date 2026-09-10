@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - myRedisCache
+
+  myRedisCache:
+    image: redis:latest 
+
+    

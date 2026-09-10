@@ -13,3 +13,7 @@ Dockerize Both Services:
 
 Create Dockerfiles for both the Flask app and Redis.
 Use Docker Compose to manage the multi-container application.
+
+Things learnt:
+1. When dealing with a bridge network, the containers ports have to be exposed past the private network otherwise you will not be able to access them.
+This is done by using the -p command when you run a container specifiying the container port to the host machine port e.g 5000:5000
