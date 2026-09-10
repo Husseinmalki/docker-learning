@@ -2,7 +2,7 @@ from flask import Flask
 import redis
 
 app = Flask(__name__)
-r = redis.Redis()
+r = redis.Redis(host="myRedisCache", port=6379, decode_responses=True)
 
 
 @app.route('/')
@@ -11,7 +11,7 @@ def welcome():
 
 @app.route('/count')
 def counter():
-    r.INCR('count')
+    r.incr('count')
     return r.get('count')
 
 if __name__ == "__main__":
