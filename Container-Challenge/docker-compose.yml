@@ -3,6 +3,7 @@ services:
     environment:
       - REDIS_HOST=myRedisCache
       - REDIS_PORT=6379
+      - FLASK_PASS=${FLASK_PASS}
     build: .
     ports:
       - "5000:5000"
