@@ -1,5 +1,8 @@
 services:
   web:
+    environment:
+      - REDIS_HOST=myRedisCache
+      - REDIS_PORT=6379
     build: .
     ports:
       - "5000:5000"
@@ -8,5 +11,9 @@ services:
 
   myRedisCache:
     image: redis:latest 
-
+    volumes:
+      - redis-data:/data
     
+  
+volumes:
+  redis-data:
