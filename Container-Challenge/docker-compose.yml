@@ -5,11 +5,18 @@ services:
       - REDIS_PORT=6379
       - FLASK_PASS=${FLASK_PASS}
     build: .
+    expose:
+      - "5000"
+    depends_on:
+      - myRedisCache
+  loadbalancer:
+    image: nginx:latest
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "5000:5000"
     depends_on:
-      - myRedisCache
-
+      - web
   myRedisCache:
     image: redis:latest 
     volumes:
